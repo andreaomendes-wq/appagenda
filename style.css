@@ -1,0 +1,20 @@
+/* Estilos customizados para as abas do Portfólio URE Votorantim */
+.tab-btn {
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .tab-btn:hover {
+    transform: translateY(-1px);
+  }
+  
+  @media print {
+    body {
+      background-color: #ffffff;
+    }
+    .tab-content {
+      display: block !important;
+      border: none !important;
+      box-shadow: none !important;
+      margin-bottom: 2rem;
+    }
+  }
