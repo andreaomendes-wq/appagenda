@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Acompanhamento Formativo - URE Votorantim</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-stone-100 text-stone-800 font-sans min-h-screen pb-12 print:bg-white print:pb-0">
+
+  <!-- CAPA E CABEÇALHO INSTITUCIONAL -->
+  <header class="bg-stone-900 text-white shadow-lg border-b-4 border-amber-500 print:hidden">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 20 85 C 40 80, 60 80, 80 85 L 80 90 C 60 85, 40 85, 20 90 Z" fill="#0284c7" />
+            <path d="M 50 82 L 50 45 Q 45 35 30 30 Q 50 40 50 45 Q 55 35 70 30 Q 50 40 50 82" fill="#78350f" />
+            <circle cx="30" cy="25" r="7" fill="#0d9488" />
+            <circle cx="70" cy="25" r="7" fill="#e11d48" />
+            <circle cx="50" cy="18" r="8" fill="#ca8a04" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-sm font-bold tracking-wide uppercase text-amber-400">URE Votorantim</h1>
+          <p class="text-xs text-stone-300">Equipe de Especialistas em Currículo</p>
+        </div>
+      </div>
+      <button onclick="window.print()" class="bg-amber-600 hover:bg-amber-500 text-white px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2 transition">
+        <i class="fas fa-print"></i> Imprimir / Gerar PDF
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto mt-6 px-4">
+    <!-- BANNER CAPA DO PORTFÓLIO -->
+    <div class="bg-white rounded-2xl shadow-md overflow-hidden border border-stone-200 mb-8 p-6 print:border-none print:shadow-none">
+      <div class="flex flex-col md:flex-row items-center gap-6 border-b border-stone-200 pb-6">
+        <div class="w-28 h-28 flex-shrink-0 bg-stone-50 rounded-2xl p-2 border border-stone-200 flex items-center justify-center shadow-inner">
+          <svg viewBox="0 0 100 100" class="w-full h-full">
+            <path d="M 15 85 C 35 78, 65 78, 85 85 L 85 92 C 65 85, 35 85, 15 92 Z" fill="#0284c7" />
+            <path d="M 50 82 C 48 60, 40 50, 25 40 C 42 48, 48 58, 50 82 C 52 58, 58 48, 75 40 C 60 50, 52 60, 50 82" fill="#78350f" />
+            <circle cx="25" cy="35" r="8" fill="#0d9488" />
+            <circle cx="75" cy="35" r="8" fill="#e11d48" />
+            <circle cx="50" cy="22" r="9" fill="#ca8a04" />
+            <circle cx="36" cy="25" r="6" fill="#16a34a" />
+            <circle cx="64" cy="25" r="6" fill="#ea580c" />
+          </svg>
+        </div>
+        <div class="text-center md:text-left flex-1">
+          <span class="inline-block bg-teal-100 text-teal-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2">Núcleo Pedagógico</span>
+          <h2 class="text-2xl md:text-3xl font-extrabold text-stone-800 tracking-tight">Portfólio de Acompanhamento Formativo</h2>
+          <p class="text-stone-500 text-sm mt-1">Unidade Regional de Ensino — URE Votorantim</p>
+        </div>
+      </div>
+
+      <!-- METADADOS DA ESCOLA / ESPECIALISTA -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-stone-500 mb-1">Especialista / Formador(a)</label>
+          <input type="text" id="especialista" placeholder="Nome do Especialista" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-500 mb-1">Escola Acompanhada</label>
+          <input type="text" id="escola" placeholder="Nome da Unidade Escolar" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-stone-500 mb-1">Ano Letivo / Período</label>
+          <input type="text" id="periodo" value="2026" class="w-full bg-stone-50 border border-stone-300 rounded-lg p-2 focus:ring-2 focus:ring-teal-500 focus:outline-none">
+        </div>
+      </div>
+    </div>
+
+    <!-- ABAS DA AGENDA COM CORES DEDICADAS -->
+    <div class="flex flex-wrap gap-2 mb-6 border-b border-stone-300 pb-2 print:hidden" id="tab-buttons">
+      <button onclick="switchTab('agenda')" id="btn-agenda" class="tab-btn bg-teal-700 text-white font-medium text-sm px-5 py-2.5 rounded-t-xl flex items-center gap-2 transition-all">
+        <i class="fas fa-calendar-alt"></i> Agenda
+      </button>
+      <button onclick="switchTab('relatorios')" id="btn-relatorios" class="tab-btn bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium text-sm px-5 py-2.5 rounded-t-xl flex items-center gap-2 transition-all">
+        <i class="fas fa-file-alt"></i> Relatórios
+      </button>
+      <button onclick="switchTab('fotos')" id="btn-fotos" class="tab-btn bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium text-sm px-5 py-2.5 rounded-t-xl flex items-center gap-2 transition-all">
+        <i class="fas fa-camera"></i> Registros Fotográficos
+      </button>
+      <button onclick="switchTab('combinados')" id="btn-combinados" class="tab-btn bg-stone-200 text-stone-700 hover:bg-stone-300 font-medium text-sm px-5 py-2.5 rounded-t-xl flex items-center gap-2 transition-all">
+        <i class="fas fa-handshake"></i> Combinados
+      </button>
+    </div>
+
+    <!-- CONTEÚDO DAS SEÇÕES -->
+    
+    <!-- 1. AGENDA (TEAL) -->
+    <section id="sec-agenda" class="tab-content bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+      <div class="flex justify-between items-center border-b border-teal-100 pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-teal-900 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-teal-600 inline-block"></span> Agenda de Acompanhamentos
+          </h3>
+          <p class="text-xs text-stone-500 mt-1">Marque e organize o cronograma de acompanhamento nas escolas</p>
+        </div>
+        <button onclick="addAgendaModal()" class="bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+          <i class="fas fa-plus"></i> Nova Sessão
+        </button>
+      </div>
+      <div id="lista-agenda" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+    </section>
+
+    <!-- 2. RELATÓRIOS (TERRACOTA) -->
+    <section id="sec-relatorios" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+      <div class="flex justify-between items-center border-b border-orange-100 pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-orange-900 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-orange-600 inline-block"></span> Relatórios Formativos
+          </h3>
+          <p class="text-xs text-stone-500 mt-1">Sintetize as observações de sala de aula e alinhamentos pedagógicos</p>
+        </div>
+        <button onclick="addRelatorioModal()" class="bg-orange-600 hover:bg-orange-700 text-white text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+          <i class="fas fa-plus"></i> Novo Relatório
+        </button>
+      </div>
+      <div id="lista-relatorios" class="space-y-4"></div>
+    </section>
+
+    <!-- 3. FOTOS (VERDE LEAF) -->
+    <section id="sec-fotos" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+      <div class="flex justify-between items-center border-b border-emerald-100 pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-emerald-900 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-emerald-600 inline-block"></span> Registros Fotográficos
+          </h3>
+          <p class="text-xs text-stone-500 mt-1">Anexe e organize as evidências visuais do acompanhamento</p>
+        </div>
+        <label class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 cursor-pointer transition">
+          <i class="fas fa-file-image"></i> Importar Fotos
+          <input type="file" accept="image/*" multiple onchange="uploadFotos(event)" class="hidden">
+        </label>
+      </div>
+      <div id="galeria-fotos" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- 4. COMBINADOS (AMBAR/AMARELO) -->
+    <section id="sec-combinados" class="tab-content hidden bg-white p-6 rounded-2xl shadow-sm border border-stone-200">
+      <div class="flex justify-between items-center border-b border-amber-100 pb-4 mb-6">
+        <div>
+          <h3 class="text-xl font-bold text-amber-900 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-amber-600 inline-block"></span> Combinados & Encaminhamentos
+          </h3>
+          <p class="text-xs text-stone-500 mt-1">Prazos, metas acordadas e responsabilidades estabelecidas</p>
+        </div>
+        <button onclick="addCombinadoModal()" class="bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold px-3 py-2 rounded-lg flex items-center gap-1.5 transition">
+          <i class="fas fa-plus"></i> Novo Combinado
+        </button>
+      </div>
+      <div id="lista-combinados" class="space-y-3"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
